@@ -115,6 +115,5 @@ const Dashboard = ({ currentUser, onLogout }: DashboardProps) => {
     </div>
   );
 };
-};
 
 export default Dashboard;
