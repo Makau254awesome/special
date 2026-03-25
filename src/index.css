@@ -1,0 +1,219 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 15 30% 97%;
+    --foreground: 350 25% 15%;
+
+    --card: 15 25% 95%;
+    --card-foreground: 350 25% 15%;
+
+    --popover: 15 30% 97%;
+    --popover-foreground: 350 25% 15%;
+
+    --primary: 350 70% 36%;
+    --primary-foreground: 15 30% 97%;
+
+    --secondary: 15 40% 90%;
+    --secondary-foreground: 350 25% 15%;
+
+    --muted: 15 20% 92%;
+    --muted-foreground: 350 10% 45%;
+
+    --accent: 340 50% 75%;
+    --accent-foreground: 350 25% 15%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 15 20% 88%;
+    --input: 15 20% 88%;
+    --ring: 350 70% 36%;
+
+    --radius: 0.75rem;
+
+    --love-pink: 340 80% 85%;
+    --love-rose: 350 70% 36%;
+    --love-blush: 15 60% 94%;
+    --love-gold: 38 80% 55%;
+    --love-cream: 30 40% 96%;
+
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Lato', sans-serif;
+
+    --sidebar-background: 15 25% 95%;
+    --sidebar-foreground: 350 25% 15%;
+    --sidebar-primary: 350 70% 36%;
+    --sidebar-primary-foreground: 15 30% 97%;
+    --sidebar-accent: 340 50% 75%;
+    --sidebar-accent-foreground: 350 25% 15%;
+    --sidebar-border: 15 20% 88%;
+    --sidebar-ring: 350 70% 36%;
+  }
+
+  .dark {
+    --background: 270 25% 12%;
+    --foreground: 350 80% 85%;
+
+    --card: 270 30% 18%;
+    --card-foreground: 350 80% 85%;
+
+    --popover: 270 25% 12%;
+    --popover-foreground: 350 80% 85%;
+
+    --primary: 350 85% 60%;
+    --primary-foreground: 270 25% 12%;
+
+    --secondary: 270 40% 30%;
+    --secondary-foreground: 350 80% 85%;
+
+    --muted: 270 15% 35%;
+    --muted-foreground: 350 20% 60%;
+
+    --accent: 340 80% 70%;
+    --accent-foreground: 270 25% 12%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 270 20% 28%;
+    --input: 270 20% 22%;
+    --ring: 350 85% 60%;
+
+    --love-pink: 340 90% 70%;
+    --love-rose: 350 85% 60%;
+    --love-blush: 340 80% 65%;
+    --love-gold: 38 90% 65%;
+    --love-cream: 30 60% 50%;
+
+    --sidebar-background: 270 30% 18%;
+    --sidebar-foreground: 350 80% 85%;
+    --sidebar-primary: 350 85% 60%;
+    --sidebar-primary-foreground: 270 25% 12%;
+    --sidebar-accent: 340 80% 70%;
+    --sidebar-accent-foreground: 270 25% 12%;
+    --sidebar-border: 270 20% 28%;
+    --sidebar-ring: 350 85% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 5px currentColor, 0 0 10px currentColor; }
+  50% { box-shadow: 0 0 20px currentColor, 0 0 30px currentColor; }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-scale {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+}
+
+.animate-heartbeat {
+  animation: heartbeat 1.2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-gradient-shift {
+  animation: gradient-shift 3s ease infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+.animate-pulse-scale {
+  animation: pulse-scale 2s ease-in-out infinite;
+}
+
+.bg-shimmer {
+  background: linear-gradient(90deg, transparent 0%, hsl(var(--love-pink) / 0.3) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+.bg-gradient-love {
+  background: linear-gradient(135deg, hsl(var(--love-rose)) 0%, hsl(var(--love-pink)) 50%, hsl(var(--accent)) 100%);
+  background-size: 200% 200%;
+}
+
+.bg-gradient-love-animate {
+  background: linear-gradient(135deg, hsl(var(--love-rose)) 0%, hsl(var(--love-pink)) 50%, hsl(var(--accent)) 100%);
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease infinite;
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass-effect {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, hsl(var(--love-rose)) 0%, hsl(var(--love-pink)) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
